@@ -1,0 +1,22 @@
+.ticket_list {
+  margin: 0px;
+  padding: 0px;
+  margin-top: 20px;
+}
+.button_five {
+  display: block;
+  width: 502px;
+  height: 50px;
+  background-color: #2196f3;
+  border-radius: 5px;
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 12px;
+  outline: none;
+  border: none;
+}
+.button_five:hover,
+.button_five:active {
+  outline: none;
+  border: none;
+}

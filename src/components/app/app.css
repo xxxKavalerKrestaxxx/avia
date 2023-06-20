@@ -1,0 +1,19 @@
+.app {
+  display: flex;
+  width: 960px;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+.main {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  gap: 20px;
+}
+.no_tickets_get {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+}
