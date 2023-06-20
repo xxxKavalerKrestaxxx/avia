@@ -7,9 +7,9 @@ import App from './components/app/app'
 import './index.css'
 
 const initialState = {
-  checkedList: [],
+  checkedList: ['Без пересадок ', '1 пересадка', '2 пересадки', '3 пересадки'],
   indeterminate: true,
-  checkAll: false,
+  checkAll: true,
   menu: 'САМЫЙ ДЕШЕВЫЙ',
   stop: false,
   tickets: [],
