@@ -5,17 +5,27 @@ export default class TicketsAPI {
 
   getSearchId = () => {
     return fetch(`${this.url}search`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Ошибка при получении searchId')
+        }
+        return response.json()
+      })
       .then((data) => {
         return data.searchId
       })
       .catch((error) => {
-        console.log(error)
+        throw new Error('Ошибка при получении searchId', `${error.toString()}`)
       })
   }
+
   getTickets = (id) => {
     return fetch(`${this.url}tickets?searchId=${id}`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        }
+      })
       .then((data) => {
         return data
       })

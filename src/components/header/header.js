@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { ReactComponent as Logo } from './Logo.svg'
-import './header.css'
+import { ReactComponent as Logo } from '../../img/Logo.svg'
+
+import classes from './header.module.scss'
 
 const Header = () => {
   return (
-    <div className="header">
+    <div className={classes.header}>
       <Logo />
     </div>
   )

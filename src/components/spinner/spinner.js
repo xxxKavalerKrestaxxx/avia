@@ -1,12 +1,13 @@
 import React from 'react'
 import { Spin } from 'antd'
-import './spinner.css'
+
+import classes from './spinner.module.scss'
 
 export default class Spinner extends React.Component {
   render() {
     return (
-      <div className="spinner-container">
-        <Spin className="spinner" />
+      <div className={classes['spinner-container']}>
+        <Spin className={classes['spinner']} />
       </div>
     )
   }

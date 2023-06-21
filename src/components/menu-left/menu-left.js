@@ -1,7 +1,10 @@
 import React from 'react'
 import { Checkbox } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import './menu-left.css'
+
+import { setCheckedList, setCheckAll } from '../../redux/action.js'
+
+import classes from './menu-left.module.scss'
 
 const CheckboxGroup = Checkbox.Group
 
@@ -9,28 +12,35 @@ const plainOptions = ['Без пересадок ', '1 пересадка', '2 �
 
 const MenuLeft = () => {
   const dispatch = useDispatch()
-  const checkedList = useSelector((state) => state.checkedList)
-  const indeterminate = useSelector((state) => state.indeterminate)
-  const checkAll = useSelector((state) => state.checkAll)
+  const checkedList = useSelector((state) => state.menu.checkedList)
+  const indeterminate = useSelector((state) => state.menu.indeterminate)
+  const checkAll = useSelector((state) => state.menu.checkAll)
 
   const onChange = (list) => {
-    console.log(list)
-    dispatch({ type: 'SET_CHECKED_LIST', payload: { checkedList: list, plainOptions } })
+    dispatch(setCheckedList(list, plainOptions))
   }
 
   const onCheckAllChange = (e) => {
-    if (e.target.checked == false) dispatch({ type: 'SET_CHECKED_LIST', payload: { checkedList: [], plainOptions } })
-    else dispatch({ type: 'SET_CHECK_ALL', payload: { checkAll: e.target.checked, plainOptions } })
+    if (!e.target.checked) {
+      dispatch(setCheckedList([], plainOptions))
+    } else {
+      dispatch(setCheckAll(e.target.checked, plainOptions))
+    }
   }
 
   return (
-    <div className="menu_left">
-      <span className="menu_header">Количество пересадок</span>
-      <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll} className="button_all">
+    <div className={classes['menu_left']}>
+      <span className={classes['menu_header']}>Количество пересадок</span>
+      <Checkbox
+        indeterminate={indeterminate}
+        onChange={onCheckAllChange}
+        checked={checkAll}
+        className={classes['button_all']}
+      >
         Все
       </Checkbox>
 
-      <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} className="menu_boxes" />
+      <CheckboxGroup options={plainOptions} value={checkedList} onChange={onChange} className={classes['menu_boxes']} />
     </div>
   )
 }
