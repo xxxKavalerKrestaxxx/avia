@@ -16,5 +16,8 @@ export const setMenu = createAction('SET_MENU', (menu, stop) => ({
 }))
 
 export const setTickets = createAction('SET_TICKETS', (tickets) => ({
-  tickets,
+  tickets: tickets.tickets,
+}))
+export const setId = createAction('SET_ID', (id) => ({
+  searchID: id,
 }))

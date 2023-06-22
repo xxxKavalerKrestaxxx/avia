@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 
 const ticketsInitialState = {
   tickets: [],
+  searchID: '',
 }
 
 const ticketsReducer = (state = ticketsInitialState, action) => {
@@ -10,6 +11,11 @@ const ticketsReducer = (state = ticketsInitialState, action) => {
       return {
         ...state,
         tickets: state.tickets.concat(action.payload.tickets),
+      }
+    case 'SET_ID':
+      return {
+        ...state,
+        searchID: state.id,
       }
     default:
       return state
